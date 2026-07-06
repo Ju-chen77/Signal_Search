@@ -51,8 +51,8 @@ git --version    # macOS 自带
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/Ju-chen77/Xianyi_filter.git
-cd Xianyi_filter
+git clone https://github.com/Ju-chen77/Signal_Search.git
+cd Signal_Search
 
 # 2. 创建 Python 虚拟环境并安装依赖
 python3 -m venv .venv

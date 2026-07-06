@@ -1,6 +1,19 @@
-# Controversy Signal Radar
+# Signal Search — Controversy Signal Radar
 
-用波动率发现正在经历范式争议的公司——对标 Apple、Amazon、Tesla 等已被验证的范式公司，扫描全市场寻找类似信号。
+个人研究项目：用波动率发现正在经历范式争议的公司——对标 Apple、Amazon、Tesla 等已被验证的范式公司，扫描全市场寻找类似信号。
+
+## Data Disclaimer
+
+本项目所有数据均来自**公开市场数据源**，不涉及任何非公开、内部或专属数据：
+
+| 数据类别 | 来源 | 性质 |
+|---------|------|------|
+| 股价行情 | Yahoo Finance (yfinance)、东方财富 (akshare) | 免费公开 API |
+| 行业指数 | HSTECH、HSMBI、HSMPI、HSMOGI、HSI | 恒生公开指数 |
+| 新闻归因 | Google News RSS | 公开新闻 |
+| Benchmark 名单 | AAPL、AMZN、TSLA、NFLX、NVDA、META 等 | 公开上市公司 |
+
+本项目仅用于个人学习与研究，不构成任何投资建议。
 
 ## 它做什么
 
@@ -23,8 +36,8 @@
 
 ```bash
 # 1. 克隆并安装
-git clone https://github.com/Ju-chen77/Xianyi_filter.git
-cd Xianyi_filter
+git clone https://github.com/Ju-chen77/Signal_Search.git
+cd Signal_Search
 
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
@@ -74,7 +87,7 @@ python scripts/run_full.py --market hk --skip-news
 ## 项目结构
 
 ```
-Xianyi_filter/
+Signal_Search/
 ├── CLAUDE.md                    # 项目核心文档（方法论+迭代计划）
 ├── config/
 │   └── benchmarks.yaml          # Benchmark 公司名单和参数
@@ -92,10 +105,10 @@ Xianyi_filter/
 
 ## 当前版本
 
-**v0.2.0** — 超额波动分析（区分公司特有事件 vs 跟随大盘）+ 港股中文公司名 + Companies 汇总视图 + 分页。
+**v0.3.0** — 行业指数超额波动（HSTECH/HSMBI/HSMPI/HSMOGI）+ 财报季±3天标记 + 公司汇总视图。
 
 详见 [CLAUDE.md](./CLAUDE.md) 了解完整方法论和迭代计划，[CHANGELOG.md](./CHANGELOG.md) 了解版本变更记录。
 
-## 协作
+## License
 
-请先阅读 [CONTRIBUTING.md](./CONTRIBUTING.md)。核心约定：走分支 + PR，不直接推 main。
+MIT License. 详见 [LICENSE](./LICENSE)。
