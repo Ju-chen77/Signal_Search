@@ -1,0 +1,182 @@
+markets:
+  us:
+    name: "US Stock Market"
+    has_price_limit: false
+    initial_threshold_pct: 5.0        # 初筛阈值：日收益率绝对值 > 5% 才进入"大波动"池
+    percentile: 99                     # 取每家公司日收益率的第99百分位以上作为"显著波动"
+    benchmarks:
+      - ticker: "AAPL"
+        name: "Apple"
+        controversy: "电脑公司→消费电子→服务平台"
+      - ticker: "AMZN"
+        name: "Amazon"
+        controversy: "网上书店→万物商店→云计算"
+      - ticker: "TSLA"
+        name: "Tesla"
+        controversy: "汽车→科技→能源→AI机器人"
+      - ticker: "NFLX"
+        name: "Netflix"
+        controversy: "DVD→流媒体→内容制作"
+      - ticker: "NVDA"
+        name: "Nvidia"
+        controversy: "游戏显卡→AI基础设施"
+      - ticker: "META"
+        name: "Meta"
+        controversy: "社交→元宇宙→AI"
+    scan_universe: "sp500"
+    lookback_years: 5
+
+  hk:
+    name: "Hong Kong Stock Market"
+    has_price_limit: false
+    initial_threshold_pct: 5.0
+    percentile: 99
+    benchmarks:
+      - ticker: "9992.HK"
+        name: "Pop Mart"
+        controversy: "玩具厂→IP平台→中国迪士尼"
+      - ticker: "1810.HK"
+        name: "Xiaomi"
+        controversy: "手机→IoT→汽车"
+      - ticker: "1211.HK"
+        name: "BYD"
+        controversy: "电池→电动车→全球新能源"
+      - ticker: "3690.HK"
+        name: "Meituan"
+        controversy: "外卖→本地生活→社区团购"
+    scan_universe: "hsi"
+    lookback_years: 5
+
+    # 行业指数映射：行业名 → 恒生行业指数代码
+    sector_indices:
+      科技: "HSTECH"
+      银行: "HSMBI"
+      地产: "HSMPI"
+      能源: "HSMOGI"
+      # 以下行业没有专门指数，回退到恒生指数
+      消费: "HSI"
+      医药: "HSI"
+      金融: "HSI"
+      公用事业: "HSI"
+      电信: "HSI"
+      工业: "HSI"
+      综合企业: "HSI"
+      汽车: "HSI"
+      博彩: "HSI"
+
+    # 恒指成分股行业分类（手动维护）
+    sector_mapping:
+      # 科技（对标 HSTECH 恒生科技指数）
+      "0241.HK": "科技"     # 阿里健康
+      "0700.HK": "科技"     # 腾讯控股
+      "0981.HK": "科技"     # 中芯国际
+      "1810.HK": "科技"     # 小米集团
+      "2018.HK": "科技"     # 瑞声科技
+      "2382.HK": "科技"     # 舜宇光学科技
+      "3690.HK": "科技"     # 美团
+      "9618.HK": "科技"     # 京东集团
+      "9888.HK": "科技"     # 百度集团
+      "9961.HK": "科技"     # 携程集团
+      "9988.HK": "科技"     # 阿里巴巴
+      "9999.HK": "科技"     # 网易
+
+      # 银行（对标 HSMBI 恒生内地银行指数）
+      "0005.HK": "银行"     # 汇丰控股
+      "0011.HK": "银行"     # 恒生银行
+      "0939.HK": "银行"     # 建设银行
+      "1398.HK": "银行"     # 工商银行
+      "2388.HK": "银行"     # 中银香港
+      "3328.HK": "银行"     # 交通银行
+      "3968.HK": "银行"     # 招商银行
+      "3988.HK": "银行"     # 中国银行
+
+      # 地产（对标 HSMPI 恒生内地地产指数）
+      "0012.HK": "地产"     # 恒基地产
+      "0016.HK": "地产"     # 新鸿基地产
+      "0017.HK": "地产"     # 新世界发展
+      "0101.HK": "地产"     # 恒隆地产
+      "0823.HK": "地产"     # 领展房托
+      "0960.HK": "地产"     # 龙湖集团
+      "1109.HK": "地产"     # 华润置地
+      "1113.HK": "地产"     # 长实集团
+      "1209.HK": "地产"     # 华润万象生活
+      "1997.HK": "地产"     # 九龙仓置业
+      "2007.HK": "地产"     # 碧桂园
+      "6098.HK": "地产"     # 碧桂园服务
+
+      # 能源（对标 HSMOGI 恒生内地油气指数）
+      "0386.HK": "能源"     # 中国石油化工
+      "0857.HK": "能源"     # 中国石油股份
+      "0883.HK": "能源"     # 中国海洋石油
+
+      # 消费（回退到 HSI）
+      "0027.HK": "博彩"     # 银河娱乐
+      "0288.HK": "消费"     # 万洲国际
+      "0291.HK": "消费"     # 华润啤酒
+      "1044.HK": "消费"     # 恒安国际
+      "1928.HK": "博彩"     # 金沙中国
+      "2020.HK": "消费"     # 安踏体育
+      "2313.HK": "消费"     # 申洲国际
+      "2319.HK": "消费"     # 蒙牛乳业
+      "2331.HK": "消费"     # 李宁
+      "6862.HK": "消费"     # 海底捞
+      "9633.HK": "消费"     # 农夫山泉
+      "9992.HK": "消费"     # 泡泡玛特
+
+      # 医药（回退到 HSI）
+      "1093.HK": "医药"     # 石药集团
+      "1177.HK": "医药"     # 中国生物制药
+      "1876.HK": "医药"     # 百济神州
+      "2269.HK": "医药"     # 药明生物
+      "9688.HK": "医药"     # 再鼎医药
+
+      # 金融非银（回退到 HSI）
+      "0388.HK": "金融"     # 香港交易所
+      "1299.HK": "金融"     # 友邦保险
+      "2318.HK": "金融"     # 中国平安
+      "2628.HK": "金融"     # 中国人寿
+
+      # 公用事业（回退到 HSI）
+      "0002.HK": "公用事业"  # 中电控股
+      "0003.HK": "公用事业"  # 香港中华煤气
+      "0006.HK": "公用事业"  # 电能实业
+      "1038.HK": "公用事业"  # 长江基建
+      "2688.HK": "公用事业"  # 新奥能源
+
+      # 电信（回退到 HSI）
+      "0762.HK": "电信"     # 中国联通
+      "0941.HK": "电信"     # 中国移动
+
+      # 工业（回退到 HSI）
+      "0669.HK": "工业"     # 创科实业
+      "0868.HK": "工业"     # 信义玻璃
+      "0968.HK": "工业"     # 信义光能
+      "1378.HK": "工业"     # 中国宏桥
+
+      # 综合企业（回退到 HSI）
+      "0001.HK": "综合企业"  # 长和
+      "0267.HK": "综合企业"  # 中信股份
+      "0066.HK": "综合企业"  # 港铁公司
+
+      # 汽车（回退到 HSI）
+      "0175.HK": "汽车"     # 吉利汽车
+      "1211.HK": "汽车"     # 比亚迪股份
+
+  a_share:
+    name: "A-Share Market"
+    has_price_limit: true
+    price_limit_pct: 20    # 科创板/创业板 20%
+    initial_threshold_pct: 5.0
+    percentile: 99
+    benchmarks:
+      - ticker: "688256.SS"
+        name: "Cambricon"
+        controversy: "讲故事还是真赚钱"
+      - ticker: "300750.SZ"
+        name: "CATL"
+        controversy: "制造业还是科技公司"
+      - ticker: "002230.SZ"
+        name: "iFlytek"
+        controversy: "AI概念还是真AI能力"
+    scan_universe: null    # v0.3 实现
+    lookback_years: 5
